@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "backup": "mkdir temp && cp -r ../RobinLiu/.git ../RobinLiu/.gitignore ../RobinLiu/.gitlab-ci.yml temp/",
+    "backup": "mkdir -p temp && cp -r ../RobinLiu/.git ../RobinLiu/.gitignore ../RobinLiu/.gitlab-ci.yml temp/",
     "restore": "cp -r temp/. ../RobinLiu/",
     "clean": "rm -rf temp/",
     "build": "npm run backup && astro build && npm run restore && npm run clean"
