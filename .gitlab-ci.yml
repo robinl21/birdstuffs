@@ -1,6 +1,6 @@
 job:
   script:
     - mkdir -p /var/www/classes/863.24/people/RobinLiu
-    - export GIT_WORK_TREE=/var/www/classes/863.24/people/RobinLiu/
+    - export GIT_WORK_TREE=/var/www/classes/863.24/people/RobinLiu/web/dist
     - git checkout -f main
     - git pull
