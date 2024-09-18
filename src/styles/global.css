@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'pixel';
+    src: url('munro-small.ttf') format('truetype'),
+      url('munro-small.woff') format('woff') ;
+}
+
+
+html {
+    background-color: #f1f5f9;
+    font-family: pixel;
+  }
+  
+  body {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 80ch;
+    padding: 1rem;
+    line-height: 1.5;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  h1 {
+    margin: 1rem 0;
+    font-size: 2.5rem;
+  }
