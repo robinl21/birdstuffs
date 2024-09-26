@@ -1,0 +1,45 @@
+/* Optional: Add some styling for your blog */
+h1 {
+    font-size: 6rem;
+    margin-bottom: 40px;
+}
+  
+.badge-container {
+    display: flex; /* Use flexbox layout */
+    align-items: center; /* Vertically align items */
+    justify-content: center;
+    
+}
+
+.nes-badge  {
+    font-size: 4rem; /* Increase font size */
+}
+
+.dialogue{
+    font-size: 4rem;
+}
+
+.dialogue-right {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+p {
+    font-size: 10rem;
+}
+
+/* Initial state */
+.hoverDark {
+    filter: brightness(1); /* Normal brightness */
+    transition: filter 0.3s ease; /* Smooth transition effect */
+  }
+  
+  /* Darken on hover */
+  .hoverDark:hover {
+    filter: brightness(0.7); /* Darker effect */
+  }
+
+.credits {
+    font-size: 2rem;
+}

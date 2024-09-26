@@ -1,48 +1,95 @@
 ---
+
+// import '../styles/index.css';
+
+// import GameButton from '../components/GameButton.jsx';
+
+import "nes.css/css/nes.min.css";
+
+// Used for react specific componenst later
+import "nes-ui-react/dist/nes-ui.css"
+
 import '../styles/global.css';
+import '../styles/index.css';
+
 ---
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    
     <title>Astro</title>
   </head>
+  <body>
+
   <br class="blog-content">
     <a href="/">Home</a>
     <a href="/about/">About</a>
     <a href="/blog/">Blog</a>
-    <h1>HOW TO MAKE ALMOST ANYTHING 2024</h1> <h1> ROBIN LIU :D</h1>
+    <div class="nes-container is-centered">
+      <h1>HOW TO MAKE ALMOST ANYTHING 2024 </h1>
+      <div class="hoverDark badge-container">
+        <a href="posts/About-Me" class="nes-badge is-icon">
+          <span class="is-dark">HI! :D</span>
+          <span class="is-primary">Robin Liu!</span>
+        </a>
+        <img src="assets/gifs/DinoSprites_doux.gif" width="5%", height="auto">
+      </div>
+    </div> 
 
-    <p> Week 1 CAD</p>
-    All my CAD designs got wiped when i locally built this site into that folder ;-;
-    will redo in the near future
-
-    <p> Week 2 Cutting</p>
-    Vinyl Design: <br>
-    Inspired by artist Lexie Liu's song "Fortuna", I designed the following on Inkscape, a vector graphics editor.
-  
-
-    <img src="images/fortuna.svg" class="responsive-img"/>
-
+    <section class="nes-container">
+      <section class="message-list">
+        <section class="message -left">
+          <div class="nes-balloon from-left">
+            <div class="dialogue" >Week 1: CAD</div>
+          </div>
+        </section>
     
-    <img src="images/fortuna_draw.JPG" class="responsive-img"/>
-    Inkscape lets you convert images into bitmaps where you can easily modify the vectors! <br/>
+        <section class="message dialogue-right">
+          <div class="nes-balloon from-right">
+            <a href="posts/post-1" class="dialogue">I ACCIDENTALLY DELETED ALL MY CAD SORRY!</a>
+          </div>
+        </section>
 
-    <img src="images/vector_path.JPG" class="responsive-img"/>
-    Prepping for cutting - showing the path of the cutter <br/>
+        <section class="message -left">
+          <div class="nes-balloon from-left">
+            <div class="dialogue" >Week 2: Computer-Controlled Cutting</div>
+          </div>
+        </section>
+        
+  
+        <section class="message dialogue-right">
+          <div class="nes-balloon from-right">
+            <a href="posts/Computer-Controlled-Cutting" class="dialogue">
+              <button type="button" class="nes-btn is-success"> PAC-MAN out of Cardboard and Vinyl Stickers</button>
+            </a>
+          </div>
+        </section>
 
-    <video controls="controls" width="800" height="600">
-      <source src="images/vinyl.MOV">
-    </video>
+        <section class="message -left">
+          <div class="nes-balloon from-left">
+            <div class="dialogue" >Week 3: Embedded Programming</div>
+          </div>
+        </section>
+        
+  
+        <section class="message dialogue-right">
+          <div class="nes-balloon from-right">
+            <a href="posts/Embedded-Programming" class="dialogue">
+              <button type="button" class="nes-btn is-error"> Arduino Simulation of Pinball Machine</button>
+            </a>
+          </div>
+        </section>
+      </section>
 
-    <img src="images/transfer.JPG" class="responsive-img"/>
-    Using transfer paper (oops) <br/>
 
-    <img src="images/sticker.JPG" class="responsive-img"/>
-    On my computer! <br/>
-
-    Assets used in design: https://www.vectorstock.com/royalty-free-vector/cyber-sigilism-design-neo-tribal-gothic-style-vector-48992718 </br/>
-
+    </section>
+    
+    <div class="credits nes-container is-centered">
+      Credits: <br/>
+      UI: nes.css - https://nostalgic-css.github.io/NES.css/ <br/>
+      Dinosaur GIFs: - https://arks.itch.io/dino-characters
+    </div>
   </body>
 </html>
 

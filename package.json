@@ -5,15 +5,21 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "npm run backup && astro build && npm run restore && npm run clean",
     "preview": "astro preview",
     "astro": "astro",
     "backup": "mkdir -p temp && cp -r ../RobinLiu/.git ../RobinLiu/.gitignore ../RobinLiu/.gitlab-ci.yml temp/",
-    "restore": "cp -r temp/. ../RobinLiu/",
-    "clean": "rm -rf temp/",
-    "build": "npm run backup && astro build && npm run restore && npm run clean"
+    "restore": "cp -r temp/. ../RobinLiu/ && cp -r agreement.md ../RobinLiu/",
+    "clean": "rm -rf temp/"
   },
   "dependencies": {
-    "astro": "^4.15.7"
+    "@astrojs/mdx": "^3.1.7",
+    "@astrojs/react": "^3.6.2",
+    "astro": "^4.15.7",
+    "nes-ui-react": "^0.3.0",
+    "nes.css": "^2.2.1"
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.2"
   }
 }

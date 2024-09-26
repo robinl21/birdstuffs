@@ -1,7 +1,9 @@
+
+/* url is relative to css file */
 @font-face {
     font-family: 'pixel';
-    src: url('fonts/munro-small.ttf') format('truetype'),
-      url('fonts/munro-small.woff') format('woff') ;
+    src: url('/classes/863.24/people/RobinLiu/fonts/munro-small.ttf') format('truetype'),
+      url('/classes/863.24/people/RobinLiu/fonts/munro-small.woff') format('woff') ;
 }
 
 /* Reset margin and padding for a clean layout */
@@ -9,43 +11,23 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: pixel !important;
 }
 
 html {
-  background-color: #f1f5f9;
+  background-color: #181818;
   font-family: pixel;
   font-size: 10px; /* or any other value you'd like */
 
 }
-body {
-  line-height: 1.6;
-  padding: 20px;
-  font-size: 3rem;
-  text-align: center;
-}
 
-/* Optional: Add some styling for your blog */
-h1 {
-  font-size: 6rem;
-  margin-bottom: 20px;
-}
-
-p {
-  font-size: 4rem;
-  margin-bottom: 20px;
-}
-
-.blog-content {
-  max-width: 800px; /* Set a maximum width for the blog content */
-  margin: 0 auto; /* Center the content */
-  padding: 20px;
-}
 
 /* Responsive image */
 .responsive-img {
   max-width: 100%; /* Ensures the image doesn't exceed the container width */
   height: auto;    /* Maintains the aspect ratio */
   display: block;  /* Removes any space below the image (inline-block issue) */
-  margin: 20px 0;  /* Adds space above and below the image */
+  margin-left: auto;  /* Centers the image horizontally */
+  margin-right: auto; /* Centers the image horizontally */
 }
 

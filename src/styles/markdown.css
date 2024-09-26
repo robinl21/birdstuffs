@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'pixel';
+    src: url('/classes/863.24/people/RobinLiu/fonts/munro-small.ttf') format('truetype'),
+      url('/classes/863.24/people/RobinLiu/fonts/munro-small.woff') format('woff') ;
+}
+
+* {
+    font-family: pixel !important;
+  }
+
+.markdown-content {
+    font-family: 'pixel', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    font-size: 24px;
+    text-align: center; /* Centers horizontally */
+  }
+  
+  

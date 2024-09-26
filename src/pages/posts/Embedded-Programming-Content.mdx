@@ -1,0 +1,207 @@
+# # Week 3: Embedded Programming - Figuring out the Arduino
+
+# # JUST BRAINDUMPING - WILL CLEAN UP
+![Bad Arduino](/classes/863.24/people/RobinLiu/images/badArduino.JPG)
+
+
+=== Electronics ====
+
+https://docs.google.com/presentation/d/1iu8pZZBEQhfTdsyvbonfDtuw-2OByA3X/edit#slide=id.p14
+ 
+Voltage: difference in electric potential (work potential)
+Current: rate of flow of electrons  (flow)
+Resistance: difficulty for electrons to move through circuit (friction/ electron resistance)
+
+
+In series: current is constant throughout a series (rate of flow remains the same. Like water, follows one path)
+	Voltage drops across each component. 
+Current of one component = current of entire series
+
+
+In parallel: current is divided. Voltage stays the same.
+
+Voltage Divider: drops of voltage in accordance to resistance values create divide.
+Current = V (total) / R (total)
+Current here is 4.2 V / (200k ohms) (same across series).
+Volage drop measured as V = I * R
+Voltage across first is current x R1
+
+
+Diodes: allows current to flow in one direction only.
+	Anode: positive side
+	Cathode: negative side
+
+If voltage is applied across the diode, with anode more positive (in direction of cathode), current flows through it. If in reverse stage, no current flows.
+Conducts electricity in only one direction, unlike resistor. If voltage difference across resistor, will flow that way.
+	
+Diodes have 0 resistance..
+
+
+Current stays the same across components. Finding current across resistor = finding current across entire series. (we want to make sure current across diode is limited, so limiting current on resistor = limiting current on diode
+Voltage drops based on component’s resistance.
+
+V total = V(diode) + V (resistor)
+V resistor = V total - V diode
+
+Current across resistor = (V total - V diode) / Resistor = (5 V - diode forward) / 5 Ohms.
+
+Current won’t flow until voltage exceeds forward voltage drop.
+We can set appropriate resistance to figure out current across diode.
+
+
+
+
+Can do total equivalent resistance: summing up together.
+Votlage drops across resistor must equal total resistance.
+
+Voltage = Volt of 2 + Volt of 3 = 2 * I + 3 * i = 5V = 2I + 3 I. can add up!
+
+
+Switches: wire connects or not!
+
+Mosfets:
+	Digitally controlled switches: can code up using microcontrollers
+
+==
+Capacitance: I = C * dv/dt (change in voltage over time).
+	Ability to store electric energy in field
+	“Filter” for changes in voltage
+Because it stores energy, prevents drastic changes  across switch. Instead, discharges!
+
+Inductance: v(t) = L * di/dt
+Voltage induced by inductor at this instance = L * di/dt (change in current over time)
+	Electrical circuit’s ability to store energy in magnetic field when current flows thru it
+Energy: stored in electric field
+
+
+Resistors: create voltage drops, ressts voltage.
+
+Resistance: resist voltaqge. Cap: resists change in voltage. Inductance: resists change in current.
+====
+Buffering/bypass capacitors: 1 uF - 10 uF place at each digital components
+	Stabilize voltage supply + reduce noise (caps reduce noise by quieting the fluctuations)
+
+
+Current limiting resistors: put before diodes: 1K ohms
+Pullup/pulldown resistors: 10K
+	Ensures digital input at pin has defined logical level even when no driver.
+	Pull up: connect input pin to high voltage ethroug resistor. If device switch pulls pin to ground, resistor limits current to safe level rather than being virtually no resistance.
+	Pull-down: connect input pin to ground. When no device driving, it is at 0. When at high voltage, resistor limits current flow once again.
+
+
+Button debounce: capacitor, or use slow reads to prevent registering on and off multiple times.
+
+====
+Reading circuit board:
+	J = connector. USB connector gets 5V. Voltage divider drops it to 3V
+
+	J SWD: loads code in!
+
+====
+
+Microcontroller:
+	Integrated circuit with processor, memory, peripherals - allowing it to code and be a self-contained computing system.
+		Examples: 8051, Arduino
+
+
+	Within it: Embedded architectures:
+Von Neumann:
+Single bus for instruction and data. Program code and data share same memory space.
+Harvard architecture:
+Separate buses/memory spaces for instructions and data. Parallel data and instruction fetches
+RISC: highly optimized set of instructions rather than assembly
+Microcontroller Architecutes: MCUs specifically for that microcontroller
+AVR: (Atmel- a modified harvard architecture)
+Separate program/data memories, but single unified address space.
+RISC: small set of instructions for efficient processing.
+	
+	Workflow: code in C/C++ in Arduino IDE, Atmel Studio
+		Compile into binary hex file
+	Flash binary into microcontroller
+
+
+For 8051: code in assembly, then upload binary code into instruction space (Von Neumann)
+
+
+Direct Memory Access: hardware on processor that can only perform memcpy’s.
+	Use as buffer!
+	Double buffering: one buffer> holds CPU output. Other buffer holds display.
+Fills up CPU buffer. Other is displaying the other buffer.
+When done filling up CPU BUFFER, swap. Display the filled other buffer.
+
+
+Assignment:
+Microcontroller:
+	Write program for microcontroller to interact (Wokwit)
+
+
+Go for Arduino: so much documentation!
+Last year, had to implement frequency detector using Fourier transforms on PSOC- everything was documented in Arduino, was very jealous.
+
+
+Arduino Uno Datasheet:
+https://docs.arduino.cc/resources/datasheets/A000066-datasheet.pdf
+
+ATmega328P processor
+14 digital input/output pins (reads either high 5V or low 0 V)
+6 analog pins (read precisely from 0V to 5V)
+USB connections, ICSP header, reset button
+
+Power tree
+
+Programming:
+	Install Arduino Desktop IDE. Connect using USB-B cable to computer, which powers board tooV
+Initialize: power supply -
+	V_in: supply external voltage supply directly to board - don’t need USB or power jack
+Power jack: external power source, power adaptor.
+USB connector: connects to computer, power/programming!
+
+Digital Pins:
+	0 - 13: input or output.
+RX and TX: serial communication with others
+PD0-PD7, PB0-PB7, PC: each has 8 pins, I/O pins as digital inputs or outputs to others
+
+A0 - A5: analog signals, from 0  V to 5V. Can be used as Digital if needed.
+AREF: Analog Reference: used for ADC. external reference voltage for analog inputs.
+5V, 3.3V: can use to power others! Don’t want to draw too much current though.
+GND pins: all connected to each other.
+
+RESET: restarts program.
+IOREF: provides operating voltage of microcontroller (5V or 3V?!)
+SCL: i2c communication to other devices in short distance: SCL is clock line, SDA is data line. 
+	Master sends message, slave sends back
+Peripheral Interface: talk to peripheral devices!
+	MISO: slave to master commmuncication
+	MOSI: master out slave in
+	SCK: clock signal for synchronizing.
+	CS: chip select: each slave device has unique SS/CS line, that when on, means swapping chip select.
+
+pinMode: sets pin as either input or output
+digitalWrite: writes out of digital pin
+
+Setup: 
+	Set analog pins as input or output
+	
+
+===
+Arduino Uno idea:
+Servo motor: based on button pressed, moves sirvo in different direction,
+Left right: one motor.
+Top down: different motor
+
+Analog Joystick:
+	VCC: 5V
+	Vert: ANALOG PIN A0 (INPUT into Arduino)
+	Horz: ANALOG PIN A1 (INPUT into Arduino)
+	SEL: any digital pin: 
+	GND: center shorts SEL to ground (not gonna use)
+
+Setup + Read: since analog input: we analog read
+	Analgo Read: This means that it will map input voltages between 0 and the operating voltage(5V or 3.3V) into integer values between 0 and 1023.
+    Write PWM out to servo (Pulse width modulation - position dependent on duty cycle)
+
+Stretch goal: TFT display
+
+Coding: 
+Easy to get sirvo to move. hard to get more complex behavior.
+Want to interrupt current movement. Have to poll, get new signal, mark an interrupted flag, consume flag.
