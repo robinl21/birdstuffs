@@ -1,0 +1,63 @@
+# Week 8: Output Devices
+
+# # Assignment  
+Add an output device to a microcontroller board you've designed,
+         and program it to do something
+
+# # Reduce, Reuse, Recycle?
+
+In previous input devices week, I wired a Xiao RP2040 to read from an accelorometer! Although the acceleration was not very accurate, it was good at detecting the orientation of the board.  
+Additionally, in Electronics Production week, I wired an RP2040 to turn on/off a motor based on buttons.  
+
+Why not combine the both?  
+
+While trying to put in my Servo wires into the breakout pinheads, I ended up ripping the traces off the board.  
+![PCB](/classes/863.24/people/RobinLiu/images/week9_output/flopBoard.JPG)   
+Looking back, I could've soldered the Servo leads into the Xiao pins themselves, but I also didn't think just controlling a Servo counted for output devices.  
+
+I decided to redo the board, and amke something more aligned to my final project. I prototyped a design for my wings, which requires a motor pushing vertically to 'flap' the wings.  
+![PCB](/classes/863.24/people/RobinLiu/images/week9_output/wingProto.JPG)  
+
+Looking online, thought about using a linear actuator, which provides that vertical linear motion for me. 
+
+![PCB](/classes/863.24/people/RobinLiu/images/week9_output/Actuator.JPG)  
+
+These require high voltage and high current draw, so I needed a relay to control the actuator from the microcontroller. After consulting with Anthony, he suggested the stepper motor over the linear actuator for the following reasons:  
+1. The actuator is overkill! $50 for 100+ pounds of weight, which is more than I need.  
+2. Controlling the actuator requires an H-Bridge.  
+3. The shop has stepper motors.  
+4. With the DRV8248 chip, controlling the stepper is as simply as setting the direction and sending a PWM, where a step is taken on each rising edge.  
+
+First, I went through the DRV8248 datasheet, drawing out what I'd set each pin to:  
+
+![PCB](/classes/863.24/people/RobinLiu/images/week9_output/DRVdatasheet.JPG)  
+
+![PCB](/classes/863.24/people/RobinLiu/images/week9_output/sketch.JPG)  
+
+# # Designing
+
+Time to take this to Fusion! I modified my accelorometer board from the previous week to include the stepper driver.  
+
+Some mishaps along the way:  
+1. I was wiring bypass capacitors in series rather than in parallel.  
+2. Pots are like sliding resistors. One end is connected to power, the other is connected to ground. The middle 'fork' is the output voltage.  
+
+
+![PCB](/classes/863.24/people/RobinLiu/images/week9_output/pcbWiring.JPG)  
+Shoutout to the 3 0-resistors in a row there. I spent a couple hours trying to make this cleaner, but I fear this is the best I got xd.  
+The spacing between the DRV pins are absolutely tiny, so I had to modify traces near it to be 9 mil.  
+
+
+# # Milling/Soldering  
+It was getting late and I was rushing so I forgot to document most of my work.  
+There were a lot of soldering mishaps - almost all the pins from the DRV were shorted together because I used too much solder paste.  
+Additionally, when wiring a capacitor to the board, I ended up ripping the traces off.  
+Huge huge thanks to Alec for doing amazing CPR and saving my board.  
+
+To save the shorts on the DRV, he heated up a piece of copper and placed it on the shorted pins to wick off the excessive solder.  
+To replace the traces, he stripped a wire and soldered it over the ripped off trace.  
+I was gooped.. it was insane. 
+
+![PCB](/classes/863.24/people/RobinLiu/images/week9_output/millSolder.JPG)  
+
+
